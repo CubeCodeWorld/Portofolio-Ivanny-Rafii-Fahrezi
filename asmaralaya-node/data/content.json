@@ -1,0 +1,76 @@
+{
+  "venue": {
+    "name": "Asmaralaya Coffee",
+    "location": "Cisarua, Puncak, Bogor",
+    "elevation": "±1300 MDPL",
+    "view": "Pangrango Mountain View",
+    "instagram": "@asmaralayacoffee",
+    "whatsapp": "+62 852-8042-5726"
+  },
+  "experiences": [
+    {
+      "title": "Mountain View",
+      "description": "Nikmati kopi dengan pemandangan kabut dan udara sejuk khas Puncak.",
+      "icon": "fa-solid fa-mountain-sun",
+      "image": "assets/images/venue-coffee-table.jpg",
+      "alt": "Pengunjung menikmati kopi di area outdoor Asmaralaya Coffee saat berkabut"
+    },
+    {
+      "title": "Cozy Ambience",
+      "description": "Suasana hangat dan nyaman untuk ngobrol, bekerja, atau menyendiri.",
+      "icon": "fa-solid fa-couch",
+      "image": "assets/images/venue-barista.jpg",
+      "alt": "Barista Asmaralaya Coffee menyiapkan minuman di coffee bar"
+    },
+    {
+      "title": "Coffee & Bites",
+      "description": "Kopi signature, camilan, dan sajian hangat untuk menemani udara sejuk Puncak.",
+      "icon": "fa-solid fa-mug-hot",
+      "image": "assets/images/menu-mix-platter.webp",
+      "alt": "Tahu bakso goreng, cireng, mix platter, dan kopi di Asmaralaya Coffee"
+    },
+    {
+      "title": "Photo Spot",
+      "description": "Sudut hijau, coffee bar, dan atmosfer berkabut yang khas untuk mengabadikan momen.",
+      "icon": "fa-solid fa-camera",
+      "image": "assets/images/venue-roastery-logo.jpg",
+      "alt": "Asmaralaya Coffee & Roastery dengan suasana berkabut"
+    }
+  ],
+  "gallery": [
+    {
+      "image": "assets/images/drink-signature.jpg",
+      "alt": "Signature drinks Asmaralaya Coffee",
+      "featured": true,
+      "className": "gallery-drink-signature"
+    },
+    {
+      "image": "assets/images/drink-newyear-clean.webp",
+      "alt": "Dua minuman Asmaralaya Coffee tanpa overlay promosi"
+    },
+    {
+      "image": "assets/images/menu-mix-platter.webp",
+      "alt": "Tahu bakso goreng, cireng, mix platter, kopi, dan pemandangan Asmaralaya Coffee"
+    },
+    {
+      "image": "assets/images/menu-roti-pisang.webp",
+      "alt": "Roti bakar dan pisang bakar coklat keju dengan minuman Asmaralaya Coffee"
+    },
+    {
+      "image": "assets/images/venue-coffee-table.jpg",
+      "alt": "Pengunjung menikmati kopi di meja outdoor Asmaralaya Coffee"
+    },
+    {
+      "image": "assets/images/venue-barista.jpg",
+      "alt": "Barista Asmaralaya Coffee di coffee bar"
+    },
+    {
+      "image": "assets/images/venue-roastery-logo.jpg",
+      "alt": "Identitas Asmaralaya Coffee & Roastery di area bar"
+    },
+    {
+      "image": "assets/images/venue-misty-portrait.jpg",
+      "alt": "Suasana berkabut di Asmaralaya Coffee"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#0a0a0a" name="theme-color"/>
+<title>RETNAM — QA Report</title>
+<link href="assets/css/qa-report.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="hero">
+<div class="shell">
+<nav class="nav">
+<div class="brand"><img alt="RETNAM logo" src="assets/images/retnam_logo.jpg"/><span>RETNAM QA</span></div>
+<div class="navlinks"><span data-lang-slot=""></span>
+<a aria-label="Back to portfolio" class="pill back-pill" href="index.html#works">← Back</a><a class="pill" href="#test-cases">Test Cases</a>
+<a class="pill" href="#coverage">Coverage</a>
+<a class="pill primary" href="https://cubecodeworld.github.io/RETNAM-Financial-Management-System-Demo/" rel="noopener" target="_blank">🌐 Live Demo ↗</a>
+</div>
+</nav>
+<div class="hero-grid">
+<div>
+<div class="kicker">Quality Assurance Report</div>
+<h1>Financial flow tested beyond the happy path.</h1>
+<p class="lead">QA evidence for RETNAM · Financial Management System, combining an executed Playwright + TypeScript automation suite with the existing source-grounded financial-flow verification matrix.</p>
+</div>
+<aside class="summary-card">
+<div class="label">Latest automation run</div>
+<div class="score">PASS <span>14 automated tests</span></div>
+<div class="mini">The supplied Playwright result records a passed run with zero failed tests. Coverage includes authentication, UI transaction flows, API behavior, balance validation, CSRF rejection, and optimistic-lock conflict handling.</div>
+</aside>
+</div>
+</div>
+</header>
+<main class="shell">
+<section class="section automation-run" id="automation">
+<div class="section-head">
+<div><h2>Automation execution</h2><div class="section-sub">Latest supplied Playwright + TypeScript run. The suite contains 14 executable test cases across authentication, transaction UI, API validation, and business-rule checks; the recorded last-run status is passed with no failed tests.</div></div>
+<span class="status pass">PASSED</span>
+</div>
+<div class="metrics automation-metrics">
+<div class="metric"><b>14</b><span>automated test cases</span></div>
+<div class="metric"><b>14</b><span>passed in recorded run</span></div>
+<div class="metric"><b>0</b><span>failed tests</span></div>
+<div class="metric"><b>PW + TS</b><span>Playwright + TypeScript</span></div>
+</div>
+<div class="scope automation-scope">
+<article class="scope-card"><h3>Authentication</h3><p>Successful admin login, rejected invalid password, logout, and unauthenticated API rejection.</p></article>
+<article class="scope-card"><h3>UI transaction flow</h3><p>Open and fill the income form, validate an empty amount, save income successfully, and verify the balance increase.</p></article>
+<article class="scope-card"><h3>API &amp; business rules</h3><p>Authenticated GET/POST behavior, balance updates, CSRF rejection, and stale-version conflict handling with HTTP 409.</p></article>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div><h2>Source verification snapshot</h2><div class="section-sub">Separate from the automation run above, this earlier source-backed matrix documents 10 broader financial-flow scenarios and preserves two environment-level integration checks as pending rather than overstating coverage.</div></div>
+</div>
+<div class="metrics">
+<div class="metric"><b>10</b><span>documented test scenarios</span></div>
+<div class="metric"><b>8</b><span>logic/source-backed PASS scenarios</span></div>
+<div class="metric"><b>2</b><span>integration scenarios marked pending</span></div>
+<div class="metric"><b>0</b><span>confirmed open defects in supplied verification</span></div>
+</div>
+</section>
+<section class="section" id="coverage">
+<div class="section-head">
+<div><h2>Coverage</h2><div class="section-sub">The project combines financial workflow validation, access control, data consistency, reporting, and file handling.</div></div>
+</div>
+<div class="scope">
+<article class="scope-card"><h3>Cash &amp; assignment workflow</h3><p>Opening balance, income, fund assignment, member receipt, proof submission, approval, invalid decision, debt, repayment, correction, cancellation, and double-processing prevention.</p></article>
+<article class="scope-card"><h3>Authorization &amp; session behavior</h3><p>Admin/member role restrictions, active/archived account checks, CSRF-protected POST actions, isolated additional-account session profiles, and login throttling logic.</p></article>
+<article class="scope-card"><h3>Reports &amp; evidence</h3><p>Monthly cash rows, cross-month balance carry-over, assignment reporting, cancellation treatment, receipt validation, and print/PDF workflow readiness.</p></article>
+</div>
+</section>
+<section class="section">
+<div class="section-head">
+<div><h2>Test matrix</h2><div class="section-sub">PASS means the behavior is directly asserted by the provided tests or explicitly verified in CATATAN-UJI. PENDING means the project's own notes require environment-level integration testing.</div></div>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>ID</th><th>Scenario</th><th>Expected result</th><th>Status</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td class="id">TC-001</td><td>Opening balance → income → assignment → member submits Rp15.000 spend + Rp5.000 return → admin approves.</td><td>Cash becomes Rp115.000; approved expense Rp15.000; return is not counted as new income; spend is not deducted twice.</td><td><span class="status pass">PASS</span></td><td class="source">tests/cash.php</td></tr>
+<tr><td class="id">TC-002</td><td>Admin attempts to approve the same submitted assignment twice.</td><td>Second approval is rejected.</td><td><span class="status pass">PASS</span></td><td class="source">tests/cash.php</td></tr>
+<tr><td class="id">TC-003</td><td>Member attempts an admin-only income action.</td><td>Action is rejected by role authorization.</td><td><span class="status pass">PASS</span></td><td class="source">tests/cash.php · api/actions.php</td></tr>
+<tr><td class="id">TC-004</td><td>Admin assigns funds greater than available central cash.</td><td>Assignment is rejected for insufficient balance.</td><td><span class="status pass">PASS</span></td><td class="source">tests/cash.php</td></tr>
+<tr><td class="id">TC-005</td><td>Invalid report: Rp20.000 assignment, Rp12.000 accepted, Rp5.000 returned.</td><td>Rp3.000 debt is created; later repayment increases cash but does not increase monthly “new income”; overpayment is rejected.</td><td><span class="status pass">PASS</span></td><td class="source">tests/cash.php</td></tr>
+<tr><td class="id">TC-006</td><td>Edit/cancel an assignment before and after member receipt.</td><td>Before receipt: correction and confirmed cancellation adjust cash exactly once and write audit history. After receipt: edit/cancel is rejected.</td><td><span class="status pass">PASS</span></td><td class="source">tests/cash.php · tests/transactions.mjs</td></tr>
+<tr><td class="id">TC-007</td><td>Generate monthly report with assignment settlement, return, corrections, and cancellation crossing month boundary.</td><td>Rows and closing balance are correct; September closing balance carries to October; later cancellation does not create fictitious responsibility or new income.</td><td><span class="status pass">PASS</span></td><td class="source">tests/report.mjs</td></tr>
+<tr><td class="id">TC-008</td><td>Open additional accounts in separate profile tabs.</td><td>Each generated profile receives a distinct 24-char token and isolated session/API/file routes.</td><td><span class="status pass">PASS</span></td><td class="source">tests/multi-login.mjs</td></tr>
+<tr><td class="id">TC-009</td><td>Import SQL, exercise real PHP session across browsers, and verify live MySQL persistence.</td><td>Database/schema/session integration works under XAMPP with real persistence.</td><td><span class="status pending">PENDING INTEGRATION</span></td><td class="source">CATATAN-UJI.txt</td></tr>
+<tr><td class="id">TC-010</td><td>Upload real JPG/PNG/WebP receipt ≤5 MB and print final cash report to PDF with receipt attachment.</td><td>File is stored/read through authenticated API and PDF output contains expected logo/signature/figures/attachments.</td><td><span class="status pending">PENDING INTEGRATION</span></td><td class="source">CATATAN-UJI.txt · PANDUAN-INSTALASI.txt</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="section" id="test-cases">
+<div class="section-head">
+<div><h2>Featured test cases</h2><div class="section-sub">Two compact examples suitable for recruiter review.</div></div>
+</div>
+<article class="case-card">
+<div class="case-top"><div><div class="kicker">TC-001 · Financial integrity</div><h3>Approved assignment must not deduct spending twice</h3></div><span class="status pass">PASS</span></div>
+<div class="case-grid">
+<div class="box"><h4>Steps</h4><ol><li>Set opening cash to Rp100.000.</li><li>Add Rp30.000 income.</li><li>Assign Rp20.000 to a member.</li><li>Member marks funds received.</li><li>Member submits Rp15.000 spending + Rp5.000 change with receipt.</li><li>Admin approves Rp15.000 and receives Rp5.000 change.</li></ol></div>
+<div class="box"><h4>Expected / verified</h4><ul><li>Cash after assignment: Rp110.000.</li><li>Submitting report alone does not alter cash.</li><li>Final cash after approval/return: Rp115.000.</li><li>Monthly new income remains Rp30.000.</li><li>Approved expense becomes Rp15.000.</li><li>No second deduction of the Rp15.000 spending.</li></ul></div>
+</div>
+</article>
+<article class="case-card">
+<div class="case-top"><div><div class="kicker">TC-005 · Negative / debt flow</div><h3>Invalid receipt creates exact debt and protects repayment totals</h3></div><span class="status pass">PASS</span></div>
+<div class="case-grid">
+<div class="box"><h4>Steps</h4><ol><li>Assign Rp20.000.</li><li>Member reports Rp15.000 spending and Rp5.000 change.</li><li>Admin validates only Rp12.000 spending, receives Rp5.000, and marks report Invalid.</li><li>Record Rp3.000 debt repayment.</li><li>Attempt another Rp1 repayment.</li></ol></div>
+<div class="box"><h4>Expected / verified</h4><ul><li>Debt created: exactly Rp3.000.</li><li>Cash reflects the verified return amount.</li><li>Rp3.000 repayment increases central cash.</li><li>Repayment is not counted as new income.</li><li>Extra repayment after debt is fully paid is rejected.</li></ul></div>
+</div>
+</article>
+</section>
+<section class="section">
+<div class="section-head"><div><h2>Security &amp; validation evidence</h2><div class="section-sub">These controls are visible in the provided backend source. Only behaviors explicitly executed by supplied tests are marked above as PASS.</div></div></div>
+<div class="notes">
+<div class="notice"><h3>Implemented controls</h3><p>CSRF token validation for POST requests, strict sessions, session ID regeneration on successful login, bcrypt password hashing with 8–72 character validation, active/archive account checks, optimistic version conflict response (HTTP 409), prepared PDO queries, and five failed login attempts triggering a 15-minute block.</p></div>
+<div class="notice"><h3>Receipt validation</h3><p>Backend accepts JPG, PNG, and WebP only, verifies MIME type and image validity, enforces a 5 MB limit, stores evidence outside the public asset path, and serves it only after authenticated API access.</p></div>
+</div>
+</section>
+<section class="section">
+<div class="notes">
+<div class="notice warn"><h3>Important testing boundary</h3><p>The supplied <strong>CATATAN-UJI.txt</strong> explicitly states that MySQL/MariaDB and XAMPP were not available in the original verification environment. SQL import, real cross-browser PHP sessions, real file upload, and final browser PDF printing therefore still require integration testing in the deployment environment.</p></div>
+<div class="notice"><h3>Defect statement</h3><p>No confirmed unresolved software defect is documented by the supplied verification artifacts. This report intentionally does not fabricate a bug. Instead, it shows passed negative tests and clearly marks the remaining integration work as pending.</p></div>
+</div>
+</section>
+</main>
+<footer>
+<div class="shell foot">
+<div class="brand"><img alt="" aria-hidden="true" src="assets/images/retnam_logo.jpg"/><span>RETNAM · QA Evidence</span></div>
+<div class="small-links">
+<a class="pill" href="https://cubecodeworld.github.io/RETNAM-Financial-Management-System-Demo/" rel="noopener" target="_blank">Live Demo ↗</a>
+<button class="pill" onclick="window.print()" type="button">Print / Save PDF</button>
+</div>
+<p>Prepared from the original RETNAM source package supplied by Ivanny R.F.</p>
+</div>
+</footer>
+<script src="assets/js/report-i18n.js"></script></body>
+</html>
