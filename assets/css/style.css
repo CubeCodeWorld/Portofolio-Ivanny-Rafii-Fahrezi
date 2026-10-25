@@ -956,3 +956,18 @@ header{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.42)}
 #header.scrolled .nav-item span,#header.scrolled .brand-btn{color:#111}
 @media(min-width:1024px){.footer-cols{grid-template-columns:1.35fr .75fr .75fr!important}}
 @media(max-width:767px){#header.scrolled .header-in{width:calc(100% - .75rem)!important;margin-top:.38rem!important}}
+
+/* =========================================================
+   Performance + accessibility refinement (2026-10)
+   Preserves visual fidelity while reducing mobile paint/work.
+   ========================================================= */
+html{scroll-behavior:smooth}
+/* Below-fold sections are skipped until near the viewport. */
+#about,#works,#services,.clients-panel,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* Stronger readable muted text, keeping the same visual hierarchy. */
+.eyebrow,.rating-copy,.partners-label,.slide-caption,.contact-note{color:rgba(17,17,17,.72)!important}
+:focus-visible{outline:3px solid #c46f3d!important;outline-offset:3px!important}
+/* Avoid unnecessary transition work on touch devices while keeping identical resting visuals. */
+@media (hover:none) and (pointer:coarse){
+  .work-card:hover,.interia-card:hover .interia-artwork,.asmaralaya-card:hover .asmaralaya-artwork,.berkah-card:hover .berkah-artwork,.batulayang-card:hover .batulayang-artwork img{transform:none!important}
+}
